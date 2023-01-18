@@ -1,0 +1,16 @@
+{
+  "name": "Material Theme Switcher",
+  "id": "1197529767444553259",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "ui": "ui.html",
+  "menu": [
+    {"name": "Open switcher", "command": "openSwitcher"},
+    {"name": "Save colorStyles from Team Library", "command": "saveFromTeamLibrary"},
+    {"name": "Load colorStyles from Team Library", "command": "loadFromTeamLibrary"}
+  ]
+}

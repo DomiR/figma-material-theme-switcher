@@ -1,0 +1,16 @@
+<div style="display: flex; flex-direction: column; justify-content: flex; gap: 8px">
+  <button id="light">Light</button>
+  <button id="dark">Dark</button>
+</div>
+
+<script>
+
+document.getElementById('light').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'light' } }, '*')
+}
+
+document.getElementById('dark').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'dark' } }, '*')
+}
+
+</script>
