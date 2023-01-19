@@ -1,6 +1,6 @@
 {
   "name": "material-theme-switcher",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Material theme switcher",
   "main": "code.js",
   "scripts": {
