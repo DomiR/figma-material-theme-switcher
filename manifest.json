@@ -9,7 +9,6 @@
   "ui": "ui.html",
   "menu": [
     {"name": "Open switcher", "command": "openSwitcher"},
-    {"name": "Save colorStyles from Team Library", "command": "saveFromTeamLibrary"},
-    {"name": "Load colorStyles from Team Library", "command": "loadFromTeamLibrary"}
+    {"name": "Save teams styles", "command": "saveFromTeamLibrary"}
   ]
 }
