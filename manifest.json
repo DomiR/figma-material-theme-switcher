@@ -11,6 +11,6 @@
     {"name": "👁️ Show UI", "command": "openSwitcher"},
     {"name": "🌙 Switch to dark mode", "command": "darkMode"},
     {"name": "🌞 Switch to light mode", "command": "lightMode"},
-    {"name": "💾 Save document's color styles", "command": "saveFromTeamLibrary"},
+    {"name": "💾 Save document's color styles", "command": "saveFromTeamLibrary"}
   ]
 }
