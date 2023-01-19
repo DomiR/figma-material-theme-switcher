@@ -3,6 +3,13 @@ async function main() {
     await TeamColorsManager.loadTeamStyles()
     figma.notify('Loaded team styles', {timeout: 2000})
     figma.showUI(__html__, {height: 70, width: 70})
+  } 
+  else if (figma.command === 'darkMode') {
+    replaceAllStyles('dark')
+    figma.notify('🌙 Switched to dark mode', {timeout: 2000})
+  } else if (figma.command === 'lightMode') {
+    replaceAllStyles('light')
+    figma.notify('🌞 Switched to light mode', {timeout: 2000})
   } else if (figma.command === 'saveFromTeamLibrary') {
     await TeamColorsManager.saveTeamStyleKeysToStorage()
     figma.notify('Saved team styles', {timeout: 2000})
