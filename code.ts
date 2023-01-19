@@ -1,10 +1,21 @@
 // This file holds the main code for the plugin. It has access to the *document*.
 // You can access browser APIs such as the network by creating a UI which contains
 // a full browser environment (see documentation).
-
-
-
-
+async function main() {
+  if (figma.command === 'openSwitcher') {
+    // This shows the HTML page in "ui.html".
+    console.log('running 1.0.1')
+    figma.showUI(__html__, {height: 70, width: 70})
+  } else if (figma.command === 'saveFromTeamLibrary') {
+    await TeamColorsManager.saveTeamStyleKeysToStorage()
+    figma.notify('Saved team colors to storage', {timeout: 2000})
+    figma.closePlugin();
+  } else if (figma.command === 'loadFromTeamLibrary') {
+    await TeamColorsManager.loadTeamStyles()
+    figma.notify('Loaded team colors to storage', {timeout: 2000})
+    figma.closePlugin();
+  }
+}
 
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
@@ -103,7 +114,8 @@ class TeamColorsManager {
     }
 
     console.log('start loading: ', teamColorKeys.length, ' keys')
-    const teamStyles = await Promise.all(teamColorKeys.map((k: string) => figma.importStyleByKeyAsync(k)))
+    const teamStylesResults = await Promise.all(teamColorKeys.map((k: string) => figma.importStyleByKeyAsync(k).catch(_e => null)))
+    const teamStyles = teamStylesResults.filter(s => s != null)
     console.log('loaded team: ', teamStyles)
     const styles = teamStyles.map(a => ({id: a.id, name: a.name}))
     await figma.clientStorage.setAsync(this.styles, JSON.stringify(styles))
@@ -166,15 +178,4 @@ class Replacer {
   }
 }
 
-if (figma.command === 'openSwitcher') {
-    // This shows the HTML page in "ui.html".
-  figma.showUI(__html__, {height: 70, width: 70})
-} else if (figma.command === 'saveFromTeamLibrary') {
-  TeamColorsManager.saveTeamStyleKeysToStorage()
-  figma.notify('Saved team colors to storage', {timeout: 2000})
-  figma.closePlugin();
-} else if (figma.command === 'loadFromTeamLibrary') {
-  TeamColorsManager.loadTeamStyles()
-  figma.notify('Loaded team colors to storage', {timeout: 2000})
-  figma.closePlugin();
-}
+main()

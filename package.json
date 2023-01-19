@@ -1,14 +1,14 @@
 {
   "name": "material-theme-switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Material theme switcher",
   "main": "code.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "watch": "npm run build -- --watch"
   },
-  "author": "",
-  "license": "",
+  "author": "Dominique Rau",
+  "license": "MIT",
   "devDependencies": {
     "@figma/plugin-typings": "*",
     "typescript": "*"
